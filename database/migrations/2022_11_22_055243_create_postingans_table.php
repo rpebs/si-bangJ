@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('excerpt');
             $table->string('kategori');
+            $table->string('post');
             $table->string('image');
             $table->timestamps();
         });

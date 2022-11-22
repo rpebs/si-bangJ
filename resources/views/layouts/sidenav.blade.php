@@ -38,8 +38,8 @@
                             </a>
                             <div class="collapse" id="collapsePost" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="layout-static.html"><i class="fa-regular fa-newspaper"></i>&nbsp; Berita</a>
-                                    <a class="nav-link" href="layout-sidenav-light.html"><i class="fa-regular fa-file-lines"></i>&nbsp; Artikel</a>
+                                    <a class="nav-link" href="/post/berita"><i class="fa-regular fa-newspaper"></i>&nbsp; Berita</a>
+                                    <a class="nav-link" href="/post/artikel"><i class="fa-regular fa-file-lines"></i>&nbsp; Artikel</a>
                                 </nav>
                             </div>
                         </div>

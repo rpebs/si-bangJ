@@ -32,3 +32,10 @@ Route::get('barang', function(){
 Route::get('barang/kategori', function(){
     return view('kategoribarang');
 });
+Route::get('post/berita', function(){
+    return view('berita');
+});
+Route::get('post/artikel', function(){
+    return view('artikel');
+});
+
