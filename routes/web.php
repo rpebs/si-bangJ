@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\KategoriSurat;
+use App\Http\Controllers\SuratKeluar;
+use App\Http\Controllers\SuratMasuk;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,12 +20,19 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('surat/masuk', function (){
-    return view('suratmasuk');
-});
-Route::get('surat/keluar', function (){
-    return view('suratkeluar');
-});
+//CRUD Surat Masuk
+Route::get('surat/masuk', [SuratMasuk::class, 'index'])->name('suratmasuk');
+Route::post('surat/masuk/simpan', [SuratMasuk::class, 'store'])->name('simpansuratmasuk');
+Route::post('surat/masuk/update', [SuratMasuk::class, 'update'])->name('updatesuratmasuk');
+Route::get('surat/masuk/hapus/{kode_surat}', [SuratMasuk::class, 'delete'])->name('hapussuratmasuk');
+
+//CRUD Surat Keluar
+Route::get('surat/keluar', [SuratKeluar::class, 'index'])->name('suratkeluar');
+Route::post('surat/keluar/simpan', [SuratKeluar::class, 'store'])->name('simpansuratkeluar');
+Route::post('surat/keluar/update', [SuratKeluar::class, 'update'])->name('updatesuratkeluar');
+Route::get('surat/keluar/hapus/{kode_surat}', [SuratKeluar::class, 'delete'])->name('hapussuratkeluar');
+
+
 
 //CRUD Kategori Surat
 Route::get('surat/kategori', [KategoriSurat::class, 'index'])->name('kategorisurat');

@@ -9,4 +9,12 @@ class KategoriSurat extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+
+    public function suratmasuk(){
+        return $this->hasOne(SuratMasuk::class);
+    }
+
+    public function suratkeluar(){
+        return $this->hasOne(SuratKeluar::class);
+    }
 }
