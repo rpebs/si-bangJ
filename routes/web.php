@@ -26,3 +26,9 @@ Route::get('surat/keluar', function (){
 Route::get('surat/kategori', function(){
     return view('kategorisurat');
 });
+Route::get('barang', function(){
+    return view('databarang');
+});
+Route::get('barang/kategori', function(){
+    return view('kategoribarang');
+});
