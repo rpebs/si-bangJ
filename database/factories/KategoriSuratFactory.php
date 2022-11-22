@@ -17,7 +17,7 @@ class KategoriSuratFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'nama_kategori' => $this->faker->randomElement(['Dinas','Permohonan','Keputusan','Edaran','Pemberitahuan'])
         ];
     }
 }

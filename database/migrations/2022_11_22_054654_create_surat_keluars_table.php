@@ -21,7 +21,8 @@ return new class extends Migration
             $table->string('pengirim');
             $table->string('perihal');
             $table->string('tempat');
-            $table->date('tgl_event');
+            $table->date('tgl_mulai');
+            $table->date('tgl_selesai');
             $table->string('keterangan');
             $table->string('file');
             $table->timestamps();
