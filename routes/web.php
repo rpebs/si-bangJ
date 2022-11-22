@@ -16,3 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
+
+Route::get('surat/masuk', function (){
+    return view('suratmasuk');
+});
+Route::get('surat/keluar', function (){
+    return view('suratkeluar');
+});
+Route::get('surat/kategori', function(){
+    return view('kategorisurat');
+});
