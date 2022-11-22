@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 
 class KategoriSurat extends Controller
 {
@@ -47,19 +48,18 @@ class KategoriSurat extends Controller
 
     public function delete($id)
     {
-         $matkul = \App\Models\KategoriSurat::where('id', $id)->delete();
+
+         $where1 = DB::table('kategori_surats')->join('surat_masuks', 'kategori_surats.id', '=', 'surat_masuks.kategori_id')->select('kategori_surats.id')->where('surat_masuks.kategori_id', '=', $id)->get();
+         $where2 = DB::table('kategori_surats')->join('surat_keluars', 'kategori_surats.id', '=', 'surat_keluars.kategori_id')->select('kategori_surats.id')->where('surat_keluars.kategori_id', '=', $id)->get();
+        if($where1->isNotEmpty() || $where2->isNotEmpty()){
+            Session::flash('failed', 'Kategori dipakai dalam data barang');
+            return redirect()->route('kategorisurat');
+        } else{
+            \App\Models\KategoriSurat::where('id', $id)->delete();
             Session::flash('message', 'Data Berhasil Dihapus');
             return redirect()->route('kategorisurat');
-        // $condition = DB::table('mata_kuliah')->where('kode_matkul', '=', $kode)->get('id');
-        // $where = DB::table('mata_kuliah')->join('jadwal', 'mata_kuliah.id', '=', 'jadwal.matkul_id')->select('mata_kuliah.id')->where('jadwal.matkul_id', '=', $condition->implode('id'))->get();
-        // if($where->isNotEmpty()){
-        //     Session::flash('failed', 'Matkul Masuk Kedalam Jadwal');
-        //     return redirect()->route('tampilmatkul');
-        // } else{
-        //     $matkul = MataKuliahModel::where('kode_matkul', $kode)->delete();
-        //     Session::flash('message', 'Data Berhasil Dihapus');
-        //     return redirect()->route('tampilmatkul');
-        // }
+
+        }
 
     }
 
