@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Barang;
+use App\Http\Controllers\KategoriBarang;
 use App\Http\Controllers\KategoriSurat;
 use App\Http\Controllers\SuratKeluar;
 use App\Http\Controllers\SuratMasuk;
@@ -32,8 +34,6 @@ Route::post('surat/keluar/simpan', [SuratKeluar::class, 'store'])->name('simpans
 Route::post('surat/keluar/update', [SuratKeluar::class, 'update'])->name('updatesuratkeluar');
 Route::get('surat/keluar/hapus/{kode_surat}', [SuratKeluar::class, 'delete'])->name('hapussuratkeluar');
 
-
-
 //CRUD Kategori Surat
 Route::get('surat/kategori', [KategoriSurat::class, 'index'])->name('kategorisurat');
 Route::post('surat/kategori/simpan', [KategoriSurat::class, 'store'])->name('simpankategorisurat');
@@ -41,13 +41,21 @@ Route::get('surat/kategori/ubah/{id}', [KategoriSurat::class, 'edit'])->name('ed
 Route::post('surat/kategori/update', [KategoriSurat::class, 'update'])->name('updatekategorisurat');
 Route::get('surat/kategori/hapus/{id}', [KategoriSurat::class, 'delete'])->name('hapuskategorisurat');
 
+///CRUD Kategori Barang
+Route::get('barang/kategori', [KategoriBarang::class, 'index'])->name('kategoribarang');
+Route::post('barang/kategori/simpan', [KategoriBarang::class, 'store'])->name('simpankategoribarang');
+Route::get('barang/kategori/ubah/{id}', [KategoriBarang::class, 'edit'])->name('editkategoribarang');
+Route::post('barang/kategori/update', [KategoriBarang::class, 'update'])->name('updatekategoribarang');
+Route::get('barang/kategori/hapus/{id}', [KategoriBarang::class, 'delete'])->name('hapuskategoribarang');
 
-Route::get('barang', function(){
-    return view('databarang');
-});
-Route::get('barang/kategori', function(){
-    return view('kategoribarang');
-});
+//CRUD Barang
+Route::get('barang', [Barang::class, 'index'])->name('barang');
+Route::post('barang/simpan', [Barang::class, 'store'])->name('simpanbarang');
+Route::get('barang/ubah/{id}', [Barang::class, 'edit'])->name('editbarang');
+Route::post('barang/update', [Barang::class, 'update'])->name('updatebarang');
+Route::get('barang/hapus/{id}', [Barang::class, 'delete'])->name('hapusbarang');
+
+
 Route::get('post/berita', function(){
     return view('berita');
 });

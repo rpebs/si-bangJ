@@ -181,7 +181,7 @@
                                                             id="file" value="{{ $d->file }}">
 
                                                     </div>
-                                                    <p>*masukkan file yang sama</p>
+                                                    <p>*masukkan file dengan nama tanpa spasi</p>
                                                 </div>
 
 

@@ -17,7 +17,7 @@ class KategoriBarangFactory extends Factory
     public function definition()
     {
         return [
-            //
+             'nama_kategori' => $this->faker->randomElement(['Elektronik','Obat','Baju','Celana','Topi'])
         ];
     }
 }

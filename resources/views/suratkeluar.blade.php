@@ -72,7 +72,7 @@
                                             class="fa-solid fa-pencil"></i></button>
 
 
-                                    <a href="/surat/masuk/hapus/{{ $d->kode_surat }}"
+                                    <a href="/surat/keluar/hapus/{{ $d->kode_surat }}"
                                         onclick="return confirm('Apakah Anda Yakin Menghapus Data?');"
                                         class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></a>
                                     <a href="{{ url('/suratkeluar/' . $d->file) }}" class="btn btn-sm btn-success"><i
