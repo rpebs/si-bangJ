@@ -122,4 +122,14 @@ class Berita extends Controller
         // }
 
     }
+
+    public function tampil(){
+        $data = \App\Models\Postingan::where('kategori', 'berita')->paginate(10);
+        return view('user.berita', ['postingans'=>$data]);
+    }
+
+     public function baca($slug){
+        $data = \App\Models\Postingan::where('slug', $slug)->first();
+        return view('user.bacaberita', ['postingans'=>$data]);
+    }
 }

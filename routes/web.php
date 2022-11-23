@@ -72,6 +72,10 @@ Route::post('post/berita/simpan', [Berita::class, 'store'])->name('simpanberita'
 Route::post('post/berita/edit', [Berita::class, 'update'])->name('updateberita');
 Route::get('post/berita/hapus/{slug}', [Berita::class, 'delete'])->name('hapusberita');
 
+//View User Ecommerce
 Route::get('ecommerce', [Ecommerce::class, 'index'])->name('ecommerce');
 Route::get('ecommerce/kategori/{id}', [Ecommerce::class, 'cekkategori'])->name('ecommercekategori');
 Route::get('ecommerce/search/', [Ecommerce::class, 'cari'])->name('caribarang');
+
+Route::get('berita', [Berita::class, 'tampil'])->name('tampilberita');
+Route::get('berita/baca/{slug}', [Berita::class, 'baca'])->name('bacaberita');
