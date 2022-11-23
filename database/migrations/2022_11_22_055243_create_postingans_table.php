@@ -17,10 +17,11 @@ return new class extends Migration
             $table->id();
             $table->string('judul');
             $table->string('slug')->unique();
-            $table->string('excerpt');
+            $table->longText('excerpt');
             $table->string('kategori');
-            $table->string('post');
+            $table->longText('post');
             $table->string('image');
+            $table->date('tgl_post');
             $table->timestamps();
         });
     }

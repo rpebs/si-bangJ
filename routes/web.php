@@ -1,10 +1,13 @@
 <?php
 
+use App\Http\Controllers\Artikel;
 use App\Http\Controllers\Barang;
+use App\Http\Controllers\Berita;
 use App\Http\Controllers\KategoriBarang;
 use App\Http\Controllers\KategoriSurat;
 use App\Http\Controllers\SuratKeluar;
 use App\Http\Controllers\SuratMasuk;
+use App\Models\Postingan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -55,11 +58,15 @@ Route::get('barang/ubah/{id}', [Barang::class, 'edit'])->name('editbarang');
 Route::post('barang/update', [Barang::class, 'update'])->name('updatebarang');
 Route::get('barang/hapus/{id}', [Barang::class, 'delete'])->name('hapusbarang');
 
+//CRUD Artikel
+Route::get('post/artikel', [Artikel::class, 'index'])->name('artikel');
+Route::post('post/artikel/simpan', [Artikel::class, 'store'])->name('simpanartikel');
+Route::post('post/artikel/edit', [Artikel::class, 'update'])->name('updateartikel');
+Route::get('post/artikel/hapus/{slug}', [Artikel::class, 'delete'])->name('hapusartikel');
 
-Route::get('post/berita', function(){
-    return view('berita');
-});
-Route::get('post/artikel', function(){
-    return view('artikel');
-});
+//CRUD Artikel
+Route::get('post/berita', [Berita::class, 'index'])->name('berita');
+Route::post('post/berita/simpan', [Berita::class, 'store'])->name('simpanberita');
+Route::post('post/berita/edit', [Berita::class, 'update'])->name('updateberita');
+Route::get('post/berita/hapus/{slug}', [Berita::class, 'delete'])->name('hapusberita');
 
