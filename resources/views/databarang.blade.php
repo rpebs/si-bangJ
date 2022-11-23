@@ -51,8 +51,8 @@
                             <?php $no++; ?>
                             <tr>
                                 <td>{{ $no }}</td>
-                                <td>{{ $b->kode_barang }}-001</td>
-                                <td>{{ $b->nama_barang }} Saramonic</td>
+                                <td>{{ $b->kode_barang }}</td>
+                                <td>{{ $b->nama_barang }}</td>
                                 <td>{{ $b->kategori->nama_kategori }}</td>
                                 <td>{{ $b->harga }}</td>
                                 <td><img src="{{ url('/gambarbarang/' . $b->image) }}" width="80" alt="">

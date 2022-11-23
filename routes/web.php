@@ -3,6 +3,7 @@
 use App\Http\Controllers\Artikel;
 use App\Http\Controllers\Barang;
 use App\Http\Controllers\Berita;
+use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Ecommerce;
 use App\Http\Controllers\KategoriBarang;
 use App\Http\Controllers\KategoriSurat;
@@ -22,10 +23,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-
+Route::get('/', [Dashboard::class, 'index'])->name('dashboard');
 
 
 
