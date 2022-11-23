@@ -74,4 +74,4 @@ Route::get('post/berita/hapus/{slug}', [Berita::class, 'delete'])->name('hapusbe
 
 Route::get('ecommerce', [Ecommerce::class, 'index'])->name('ecommerce');
 Route::get('ecommerce/kategori/{id}', [Ecommerce::class, 'cekkategori'])->name('ecommercekategori');
-
+Route::get('ecommerce/search/', [Ecommerce::class, 'cari'])->name('caribarang');

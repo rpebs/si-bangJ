@@ -18,4 +18,14 @@ class Ecommerce extends Controller
         $kategori = \App\Models\KategoriBarang::all();
         return view('user.ecommerce', ['title' => 'E-Commerce', 'barangs' => $data, 'kategori_barangs' => $kategori]);
     }
+
+    public function cari(Request $request)
+	{
+		$cari = $request->nama_barang;
+		$data = \App\Models\Barang::where('nama_barang','like',"%".$cari."%")->paginate(10);
+        $kategori = \App\Models\KategoriBarang::all();
+		return view('user.ecommerce', ['title' => 'E-Commerce', 'barangs' => $data, 'kategori_barangs' => $kategori]);
+	}
 }
+
+

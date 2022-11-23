@@ -3,13 +3,13 @@
     <div class="container">
         <div class="row mt-5">
 
-            <form action="#" class=" form-inline d-flex justify-content-center">
+            <form action="{{ route('caribarang') }}" method="get" class=" form-inline d-flex justify-content-center">
                 <div class="col-md-2"></div>
                 <div class="col-md-6">
-                    <input class="form-control" type="text" name="" id="" placeholder="cari barang...">
+                    <input class="form-control" type="text" name="nama_barang" id="" placeholder="cari barang...">
                 </div>
                 <div class="ms-1 col-md-3">
-                    <button class="btn btn-md btn-primary">Cari</button>
+                    <button type="submit" class="btn btn-md btn-primary">Cari</button>
                 </div>
             </form>
         </div>
@@ -32,7 +32,10 @@
                             <?php $float = (float) $b->harga; ?>
                             <h5 class="card-title">{{ $b->nama_barang }}</h5>
                             <p class="card-text"><?php echo 'Rp ' . number_format("$float", 2, ',', '.'); ?></p>
-                            <center><a href="#" class="btn btn-md btn-primary" style="width: 150px">Beli</a></center>
+                            <center><a
+                                    href="https://api.whatsapp.com/send?phone=+62881036102146&text=Halo admin ! Saya%20mau%20pesan%20barang%0ANama%20Barang : *{{ $b->nama_barang }}*%0AKode Barang : *{{ $b->kode_barang }}*"
+                                    class="btn btn-md btn-primary" target="_blank" rel="noopener noreferrer"
+                                    style="width: 150px">Beli</a></center>
                         </div>
                     </div>
                 </div>
