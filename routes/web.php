@@ -3,6 +3,7 @@
 use App\Http\Controllers\Artikel;
 use App\Http\Controllers\Barang;
 use App\Http\Controllers\Berita;
+use App\Http\Controllers\Ecommerce;
 use App\Http\Controllers\KategoriBarang;
 use App\Http\Controllers\KategoriSurat;
 use App\Http\Controllers\SuratKeluar;
@@ -24,6 +25,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
+
+
+
 
 //CRUD Surat Masuk
 Route::get('surat/masuk', [SuratMasuk::class, 'index'])->name('suratmasuk');
@@ -69,4 +73,6 @@ Route::get('post/berita', [Berita::class, 'index'])->name('berita');
 Route::post('post/berita/simpan', [Berita::class, 'store'])->name('simpanberita');
 Route::post('post/berita/edit', [Berita::class, 'update'])->name('updateberita');
 Route::get('post/berita/hapus/{slug}', [Berita::class, 'delete'])->name('hapusberita');
+
+Route::get('ecommerce', [Ecommerce::class, 'index'])->name('ecommerce');
 
