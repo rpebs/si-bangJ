@@ -73,4 +73,5 @@ Route::post('post/berita/edit', [Berita::class, 'update'])->name('updateberita')
 Route::get('post/berita/hapus/{slug}', [Berita::class, 'delete'])->name('hapusberita');
 
 Route::get('ecommerce', [Ecommerce::class, 'index'])->name('ecommerce');
+Route::get('ecommerce/kategori/{id}', [Ecommerce::class, 'cekkategori'])->name('ecommercekategori');
 
