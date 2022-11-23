@@ -2,10 +2,10 @@
 @section('content')
     <div class="container" style="min-height: 793px">
         <div class="row mt-5">
-            <form action="{{ route('cariberita') }}" method="get" class=" form-inline d-flex justify-content-center">
+            <form action="{{ route('cariartikel') }}" method="get" class=" form-inline d-flex justify-content-center">
                 <div class="col-md-2"></div>
                 <div class="col-md-6">
-                    <input class="form-control" type="text" name="judul" id="" placeholder="cari berita...">
+                    <input class="form-control" type="text" name="judul" id="" placeholder="cari artikel...">
                 </div>
                 <div class="ms-1 col-md-3">
                     <button type="submit" class="btn btn-md btn-primary">Cari</button>

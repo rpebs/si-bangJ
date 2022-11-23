@@ -10,6 +10,7 @@ class Dashboard extends Controller
         $suratmasuk = \App\Models\SuratMasuk::all();
         $barang = \App\Models\Barang::all();
         $suratkeluar = \App\Models\SuratKeluar::all();
-        return view('home', ['active' => 'dashboard','surat_masuks' => $suratmasuk, 'surat_keluars' => $suratkeluar, 'barangs' => $barang]);
+        $postingan = \App\Models\Postingan::all();
+        return view('home', ['active' => 'dashboard','surat_masuks' => $suratmasuk, 'surat_keluars' => $suratkeluar, 'barangs' => $barang, 'postingans' => $postingan]);
     }
 }

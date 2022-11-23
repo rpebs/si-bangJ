@@ -124,12 +124,19 @@ class Berita extends Controller
     }
 
     public function tampil(){
-        $data = \App\Models\Postingan::where('kategori', 'berita')->paginate(10);
+        $data = \App\Models\Postingan::where('kategori', 'berita')->orderBy('tgl_post','desc')->paginate(10);
         return view('user.berita', ['title' => 'WEB | Daftar Berita' ,'active' => 'berita','postingans'=>$data]);
     }
 
      public function baca($slug){
         $data = \App\Models\Postingan::where('slug', $slug)->first();
-        return view('user.bacaberita', ['title' => 'WEB | Baca Postingan' ,'active' => '','postingans'=>$data]);
+        return view('user.bacaberita', ['title' => 'WEB | Baca Postingan' ,'active' => 'berita','postingans'=>$data]);
     }
+
+     public function cari(Request $request)
+	{
+		$cari = $request->judul;
+		$data = \App\Models\Postingan::where('judul','like',"%".$cari."%", 'and', 'kategori', 'berita')->orderBy('tgl_post','desc')->paginate(10);
+		return view('user.berita', ['title' => 'WEB | Daftar Berita','active' => 'berita', 'postingans' => $data]);
+	}
 }
