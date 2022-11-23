@@ -12,7 +12,7 @@ class SuratMasuk extends Controller
     public function index(){
        $data = \App\Models\SuratMasuk::all();
        $kategori = \App\Models\KategoriSurat::all();
-        return view('suratmasuk', ['surat_masuks' => $data, 'kategori_surats' => $kategori]);
+        return view('suratmasuk', ['active' => 'suratmasuk','surat_masuks' => $data, 'kategori_surats' => $kategori]);
     }
 
     public function store(Request $request)

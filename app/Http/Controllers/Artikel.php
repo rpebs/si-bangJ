@@ -13,7 +13,7 @@ class Artikel extends Controller
     public function index(){
       $data = \App\Models\Postingan::where('kategori', 'artikel')->get();
 
-      return view('artikel', ['postingans' => $data]);
+      return view('artikel', ['active' => 'artikel','postingans' => $data]);
     }
 
     public function store(Request $request)
@@ -122,5 +122,15 @@ class Artikel extends Controller
         //     return redirect()->route('tampilmatkul');
         // }
 
+    }
+
+    public function tampil(){
+        $data = \App\Models\Postingan::where('kategori', 'artikel')->paginate(10);
+        return view('user.berita', ['title' => 'WEB | Daftar Artikel' ,'active' => 'artikel','postingans'=>$data]);
+    }
+
+     public function baca($slug){
+        $data = \App\Models\Postingan::where('slug', $slug)->first();
+        return view('user.bacaberita', ['title' => 'WEB | Baca Artikel' ,'active' => 'artikel','postingans'=>$data]);
     }
 }

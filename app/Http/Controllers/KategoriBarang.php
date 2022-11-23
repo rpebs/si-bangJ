@@ -10,7 +10,7 @@ class KategoriBarang extends Controller
 {
     public function index(){
       $data = \App\Models\KategoriBarang::all();
-      return view('kategoribarang', ['kategori_barangs'=>$data]);
+      return view('kategoribarang', ['active' => 'kategoribarang','kategori_barangs'=>$data]);
     }
 
     public function store(Request $request)

@@ -79,3 +79,6 @@ Route::get('ecommerce/search/', [Ecommerce::class, 'cari'])->name('caribarang');
 
 Route::get('berita', [Berita::class, 'tampil'])->name('tampilberita');
 Route::get('berita/baca/{slug}', [Berita::class, 'baca'])->name('bacaberita');
+
+Route::get('artikel', [Artikel::class, 'tampil'])->name('tampilartikel');
+

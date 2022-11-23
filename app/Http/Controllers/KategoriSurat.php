@@ -11,7 +11,7 @@ class KategoriSurat extends Controller
 {
     public function index(){
       $data = \App\Models\KategoriSurat::all();
-      return view('kategorisurat', ['kategori_surats'=>$data]);
+      return view('kategorisurat', ['active' => 'kategorisurat','kategori_surats'=>$data]);
     }
 
     public function store(Request $request)

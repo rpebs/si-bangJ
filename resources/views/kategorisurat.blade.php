@@ -3,7 +3,7 @@
     <div class="container-fluid px-4">
         <h1 class="mt-4">Tabel Kategori Surat</h1>
         <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="index.html">Kategori Surat</a></li>
+            <li class="breadcrumb-item"><a href="#">Kategori Surat</a></li>
             <li class="breadcrumb-item active">Tabel</li>
         </ol>
         <div class="row">

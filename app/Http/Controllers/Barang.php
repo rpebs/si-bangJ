@@ -11,7 +11,7 @@ class Barang extends Controller
     public function index(){
       $data = \App\Models\Barang::all();
       $kategori = \App\Models\KategoriBarang::all();
-      return view('databarang', ['barangs'=>$data, 'kategori_barangs'=>$kategori]);
+      return view('databarang', ['active' => 'barang','barangs'=>$data, 'kategori_barangs'=>$kategori]);
     }
 
     public function store(Request $request)

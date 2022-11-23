@@ -12,7 +12,7 @@ class SuratKeluar extends Controller
      public function index(){
        $data = \App\Models\SuratKeluar::all();
        $kategori = \App\Models\KategoriSurat::all();
-        return view('suratkeluar', ['surat_keluars' => $data, 'kategori_surats' => $kategori]);
+        return view('suratkeluar', ['active' => 'suratkeluar','surat_keluars' => $data, 'kategori_surats' => $kategori]);
     }
 
     public function store(Request $request)

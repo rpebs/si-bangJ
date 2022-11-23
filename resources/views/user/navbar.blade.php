@@ -9,13 +9,16 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Berita</a>
+                        <a class="nav-link {{ $active === 'berita' ? 'active' : '' }}" aria-current="page"
+                            href="{{ route('tampilberita') }}">Berita</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Artikel</a>
+                        <a class="nav-link {{ $active === 'artikel' ? 'active' : '' }}"
+                            href="{{ route('tampilartikel') }}">Artikel</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('ecommerce') }}">Toko</a>
+                        <a class="nav-link {{ $active === 'ecommerce' ? 'active' : '' }}"
+                            href="{{ route('ecommerce') }}">Toko</a>
                     </li>
                 </ul>
             </div>

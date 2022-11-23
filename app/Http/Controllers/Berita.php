@@ -12,7 +12,7 @@ class Berita extends Controller
      public function index(){
       $data = \App\Models\Postingan::where('kategori', 'berita')->get();
 
-      return view('berita', ['postingans' => $data]);
+      return view('berita', ['active' => 'berita','postingans' => $data]);
     }
 
     public function store(Request $request)
@@ -125,11 +125,11 @@ class Berita extends Controller
 
     public function tampil(){
         $data = \App\Models\Postingan::where('kategori', 'berita')->paginate(10);
-        return view('user.berita', ['postingans'=>$data]);
+        return view('user.berita', ['title' => 'WEB | Daftar Berita' ,'active' => 'berita','postingans'=>$data]);
     }
 
      public function baca($slug){
         $data = \App\Models\Postingan::where('slug', $slug)->first();
-        return view('user.bacaberita', ['postingans'=>$data]);
+        return view('user.bacaberita', ['title' => 'WEB | Baca Postingan' ,'active' => '','postingans'=>$data]);
     }
 }
