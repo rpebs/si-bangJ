@@ -1,6 +1,6 @@
 @extends('user.master')
 @section('content')
-    <div class="container">
+    <div class="container" style="min-height: 793px">
         <div class="row mt-5">
 
             <form action="{{ route('caribarang') }}" method="get" class=" form-inline d-flex justify-content-center">

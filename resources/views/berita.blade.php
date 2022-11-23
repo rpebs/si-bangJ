@@ -30,7 +30,7 @@
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
-                Tabel Artikel
+                Tabel Berita
             </div>
             <div class="card-body">
                 <table id="datatablesSimple">
@@ -62,7 +62,7 @@
                                         data-bs-target="#editmodal{{ $p->slug }}"><i
                                             class="fa-solid fa-pencil"></i></button>
 
-                                    <a href="/post/artikel/hapus/{{ $p->slug }}"
+                                    <a href="/post/berita/hapus/{{ $p->slug }}"
                                         onclick="return confirm('Apakah Anda Yakin Menghapus Data?');"
                                         class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></a>
                                 </td>
@@ -135,7 +135,7 @@
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Data Artikel</h5>
+                <h5 class="modal-title" id="staticBackdropLabel">Data Berita</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

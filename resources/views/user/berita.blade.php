@@ -1,6 +1,6 @@
 @extends('user.master')
 @section('content')
-    <div class="container">
+    <div class="container" style="min-height: 793px">
         <div class="row mt-5">
             @foreach ($postingans as $p)
                 <div class="col-md-3">
