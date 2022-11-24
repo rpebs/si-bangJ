@@ -16,15 +16,17 @@
         <p>Kategori Barang :</p>
         <a href="/ecommerce" class="btn btn-outline-primary">Semua</a>
         @foreach ($kategori_barangs as $k)
-            <a href="/ecommerce/kategori/{{ $k->id }}" class="mt-1 btn btn-outline-primary">{{ $k->nama_kategori }}</a>
+            <a href="/ecommerce/kategori/{{ $k->id }}"
+                class="mt-1 btn btn-outline-primary">{{ $k->nama_kategori }}</a>
         @endforeach
 
         <div class="row mb-5">
             @foreach ($barangs as $b)
-                <div class="col-6 col-md-3 col-lg-2 mt-3">
+                <div class="col-6 col-md-3 col-lg-2 mt-3 ">
                     <div class="card">
                         <div class="col-md-2">
-                            <span class="mt-1 ms-1 position-absolute badge bg-danger text-light">{{ $b->kategori->nama_kategori }}</span>
+                            <span
+                                class="mt-1 ms-1 position-absolute badge bg-danger text-light">{{ $b->kategori->nama_kategori }}</span>
                         </div>
 
                         <img src="/gambarbarang/{{ $b->image }}" class="card-img-top" alt="...">
