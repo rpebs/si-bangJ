@@ -77,10 +77,13 @@ Route::get('ecommerce', [Ecommerce::class, 'index'])->name('ecommerce');
 Route::get('ecommerce/kategori/{id}', [Ecommerce::class, 'cekkategori'])->name('ecommercekategori');
 Route::get('ecommerce/search/', [Ecommerce::class, 'cari'])->name('caribarang');
 
+
+//View User Berita
 Route::get('berita', [Berita::class, 'tampil'])->name('tampilberita');
 Route::get('berita/baca/{slug}', [Berita::class, 'baca'])->name('bacaberita');
 Route::get('berita/search/', [Berita::class, 'cari'])->name('cariberita');
 
+//View User Artikel
 Route::get('artikel', [Artikel::class, 'tampil'])->name('tampilartikel');
 Route::get('artikel/baca/{slug}', [Artikel::class, 'baca'])->name('bacaartikel');
 Route::get('artikel/search/', [Artikel::class, 'cari'])->name('cariartikel');
