@@ -12,4 +12,13 @@
     <link href="{{ asset('sbadmin/css/styles.css') }}" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/09bae18984.js" crossorigin="anonymous"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    {{-- trix --}}
+    <link rel="stylesheet" type="text/css" href="/trix.css">
+    <script type="text/javascript" src="/trix.js"></script>
+    <style>
+        trix-toolbar [data-trix-button-group="file-tools"] {
+            display: none;
+        }
+    </style>
 </head>

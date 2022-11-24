@@ -38,8 +38,8 @@
                         <tr>
                             <th>No</th>
                             <th width="200">Judul</th>
-                            <th width="300">Excerpt</th>
-                            <th width="700">Isi Post</th>
+                            <th width="300">Isi Postingan</th>
+                            {{-- <th width="700">Isi Post</th> --}}
                             <th>Tanggal Post</th>
                             <th>Gambar</th>
                             <th>Aksi</th>
@@ -53,7 +53,7 @@
                                 <td>{{ $no }}</td>
                                 <td>{{ $p->judul }}</td>
                                 <td>{{ $p->excerpt }}</td>
-                                <td>{{ $p->post }}</td>
+                                {{-- <td>{{ $p->post }}</td> --}}
                                 <td>{{ $p->tgl_post }}</td>
                                 <td><img src="{{ url('/gambarpostingan/' . $p->image) }}" width="80" alt="">
                                 </td>
@@ -84,17 +84,25 @@
                                                 <input type="hidden" name="id" value="{{ $p->id }}">
                                                 <div class="mb-3">
                                                     <label for="judul" class="form-label">Judul</label>
-                                                    <input type="text" class="form-control" name="judul" id="judul"
+                                                    <input type="text" class="form-control" name="judul" id="judul2"
                                                         value="{{ $p->judul }}">
                                                 </div>
-                                                <div class="mb-3">
+                                                {{-- <div class="mb-3">
                                                     <label for="excerpt" class="form-label">Excerpt</label>
                                                     <textarea class="form-control" name="excerpt" id="excerpt">{{ $p->excerpt }}</textarea>
+                                                </div> --}}
+                                                <div class="mb-3">
+                                                    <label for="slug" class="form-label">Slug</label>
+                                                    <input type="text" class="form-control" name="slug" id="slug2"
+                                                        required value="{{ $p->slug }}">
                                                 </div>
                                                 <input type="hidden" name="kategori" value="berita">
                                                 <div class="mb-3">
                                                     <label for="post">Isi Post</label>
-                                                    <textarea class="form-control" name="post" id="excerpt" style="height: 400px">{{ $p->post }}</textarea>
+                                                    {{-- <textarea class="form-control" name="post" id="excerpt" style="height: 400px">{{ $p->post }}</textarea> --}}
+                                                    <input type="hidden" name="post" id="x"
+                                                        value="{{ $p->post }}">
+                                                    <trix-editor input="x"></trix-editor>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="tgl_post" class="form-label">Tanggal Post</label>
@@ -127,6 +135,8 @@
         </div>
     </div>
 
+
+
 @endsection
 
 
@@ -144,26 +154,30 @@
                     @csrf
                     <div class="mb-3">
                         <label for="judul" class="form-label">Judul</label>
-                        <input type="text" class="form-control" name="judul" id="judul"
-                            placeholder="Judul...">
+                        <input type="text" class="form-control" name="judul" id="judul" required>
                     </div>
                     <div class="mb-3">
-                        <label for="excerpt" class="form-label">Excerpt</label>
-                        <textarea class="form-control" name="excerpt" id="excerpt"></textarea>
+                        <label for="slug" class="form-label">Slug</label>
+                        <input type="text" class="form-control" name="slug" id="slug" required>
                     </div>
                     <input type="hidden" name="kategori" value="berita">
                     <div class="mb-3">
                         <label for="post">Isi Post</label>
-                        <textarea class="form-control" name="post" id="excerpt" style="height: 400px"></textarea>
+                        {{-- <textarea class="form-control" name="post" style="height: 400px" required></textarea> --}}
+                        <input type="hidden" name="post" id="post">
+                        <trix-editor input="post"></trix-editor>
                     </div>
                     <div class="mb-3">
                         <label for="tgl_post" class="form-label">Tanggal Post</label>
-                        <input type="date" class="form-control" name="tgl_post" id="tgl_post">
+                        <input type="date" class="form-control" name="tgl_post" id="tgl_post" required>
                     </div>
                     <div class="mb-3">
-                        <label for="gambar" class="form-label">Gambar</label>
-                        <input type="file" class="form-control" id="gambar" name="image"
-                            placeholder="Gambar...">
+                        <label for="image" class="form-label">Gambar</label>
+                        {{--  --}}
+                        <img class="img-preview img-fluid mb-3 col-sm-5">
+                        {{--  --}}
+                        <input type="file" class="form-control" id="image" name="image"
+                            onchange="previewImage()" required>
                     </div>
 
 
@@ -177,3 +191,30 @@
         </div>
     </div>
 </div>
+
+<script>
+    const judul = document.querySelector('#judul');
+    const slug = document.querySelector('#slug');
+
+
+    judul.addEventListener('keyup', function() {
+
+        fetch('/x/berita/cekSlug?judul=' + judul.value)
+            .then(response => response.json())
+            .then(data => slug.value = data.slug);
+    });
+
+    function previewImage() {
+        const image = document.querySelector('#image');
+        const imgPreview = document.querySelector('.img-preview');
+
+        imgPreview.style.display = 'block';
+
+        const oFReader = new FileReader();
+        oFReader.readAsDataURL(image.files[0]);
+
+        oFReader.onload = function(oFREvent) {
+            imgPreview.src = oFREvent.target.result;
+        }
+    }
+</script>
