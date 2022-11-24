@@ -16,26 +16,26 @@
         <p>Kategori Barang :</p>
         <a href="/ecommerce" class="btn btn-outline-primary">Semua</a>
         @foreach ($kategori_barangs as $k)
-            <a href="/ecommerce/kategori/{{ $k->id }}" class="btn btn-outline-primary">{{ $k->nama_kategori }}</a>
+            <a href="/ecommerce/kategori/{{ $k->id }}" class="mt-1 btn btn-outline-primary">{{ $k->nama_kategori }}</a>
         @endforeach
 
         <div class="row mb-5">
             @foreach ($barangs as $b)
-                <div class="col-md-2 mt-5">
+                <div class="col-6 col-md-3 col-lg-2 mt-3">
                     <div class="card">
                         <div class="col-md-2">
-                            <span class="ms-1 badge bg-danger text-light">{{ $b->kategori->nama_kategori }}</span>
+                            <span class="mt-1 ms-1 position-absolute badge bg-danger text-light">{{ $b->kategori->nama_kategori }}</span>
                         </div>
 
-                        <img src="/gambarbarang/{{ $b->image }}" class="card-img-top" height="160"alt="...">
+                        <img src="/gambarbarang/{{ $b->image }}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <?php $float = (float) $b->harga; ?>
                             <h5 class="card-title">{{ $b->nama_barang }}</h5>
-                            <p class="card-text"><?php echo 'Rp ' . number_format("$float", 2, ',', '.'); ?></p>
+                            <p class="card-text"><?php echo 'Rp ' . number_format("$float", 0, ',', '.'); ?></p>
                             <center><a
                                     href="https://api.whatsapp.com/send?phone=+62881036102146&text=Halo admin ! Saya%20mau%20pesan%20barang%0ANama%20Barang : *{{ $b->nama_barang }}*%0AKode Barang : *{{ $b->kode_barang }}*"
                                     class="btn btn-md btn-primary" target="_blank" rel="noopener noreferrer"
-                                    style="width: 150px">Beli</a></center>
+                                    style="width: 80%">Beli</a></center>
                         </div>
                     </div>
                 </div>
