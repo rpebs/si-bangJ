@@ -66,6 +66,7 @@ Route::middleware(['auth'])->group(function () {
 
     //CRUD Artikel
     Route::get('post/artikel', [Artikel::class, 'index'])->name('artikel');
+    Route::get('x/post/artikel', [Artikel::class, 'cekSlugArtikel']);
     Route::post('post/artikel/simpan', [Artikel::class, 'store'])->name('simpanartikel');
     Route::post('post/artikel/edit', [Artikel::class, 'update'])->name('updateartikel');
     Route::get('post/artikel/hapus/{slug}', [Artikel::class, 'delete'])->name('hapusartikel');
