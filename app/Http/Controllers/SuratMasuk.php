@@ -48,13 +48,6 @@ class SuratMasuk extends Controller
 
     }
 
-    // public function edit($id)
-    // {
-    //     $matkul = \App\Models\KategoriSurat::where('id', $id)->get();
-
-    //     return view('ubahmatkul', ['mata_kuliah' => $matkul, 'title' => 'SI Kampus | Ubah Data Mata Kuliah']);
-    // }
-
     public function update(Request $request)
     {
         $request->validate([
@@ -109,16 +102,13 @@ class SuratMasuk extends Controller
          \App\Models\SuratMasuk::where('kode_surat', $kode)->delete();
             Session::flash('message', 'Data Berhasil Dihapus');
             return redirect()->route('suratmasuk');
-        // $condition = DB::table('mata_kuliah')->where('kode_matkul', '=', $kode)->get('id');
-        // $where = DB::table('mata_kuliah')->join('jadwal', 'mata_kuliah.id', '=', 'jadwal.matkul_id')->select('mata_kuliah.id')->where('jadwal.matkul_id', '=', $condition->implode('id'))->get();
-        // if($where->isNotEmpty()){
-        //     Session::flash('failed', 'Matkul Masuk Kedalam Jadwal');
-        //     return redirect()->route('tampilmatkul');
-        // } else{
-        //     $matkul = MataKuliahModel::where('kode_matkul', $kode)->delete();
-        //     Session::flash('message', 'Data Berhasil Dihapus');
-        //     return redirect()->route('tampilmatkul');
-        // }
 
+    }
+
+    public function detail($kode)
+    {
+    $data = \App\Models\SuratMasuk::where('kode_surat',$kode)->get();
+    $kategori = \App\Models\KategoriSurat::all();
+        return view('detailsuratmasuk', ['active' => 'suratmasuk', 'surat_masuks' => $data, 'kategori_surats' => $kategori]);
     }
 }

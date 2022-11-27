@@ -64,6 +64,10 @@
                                 Artikel</a>
                         </nav>
                     </div>
+                    <a class="nav-link {{ $active === 'agenda' ? 'text-light' : '' }}" href="/agenda">
+                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        Agenda
+                    </a>
                 </div>
             </div>
             <div class="sb-sidenav-footer">

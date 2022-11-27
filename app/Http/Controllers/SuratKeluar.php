@@ -109,16 +109,14 @@ class SuratKeluar extends Controller
          \App\Models\SuratKeluar::where('kode_surat', $kode)->delete();
             Session::flash('message', 'Data Berhasil Dihapus');
             return redirect()->route('suratkeluar');
-        // $condition = DB::table('mata_kuliah')->where('kode_matkul', '=', $kode)->get('id');
-        // $where = DB::table('mata_kuliah')->join('jadwal', 'mata_kuliah.id', '=', 'jadwal.matkul_id')->select('mata_kuliah.id')->where('jadwal.matkul_id', '=', $condition->implode('id'))->get();
-        // if($where->isNotEmpty()){
-        //     Session::flash('failed', 'Matkul Masuk Kedalam Jadwal');
-        //     return redirect()->route('tampilmatkul');
-        // } else{
-        //     $matkul = MataKuliahModel::where('kode_matkul', $kode)->delete();
-        //     Session::flash('message', 'Data Berhasil Dihapus');
-        //     return redirect()->route('tampilmatkul');
-        // }
 
+
+    }
+
+    public function detail($kode)
+    {
+    $data = \App\Models\SuratKeluar::where('kode_surat',$kode)->get();
+    $kategori = \App\Models\KategoriSurat::all();
+        return view('detailsuratkeluar', ['active' => 'suratkeluar', 'surat_keluars' => $data, 'kategori_surats' => $kategori]);
     }
 }
