@@ -101,5 +101,6 @@ Route::get('artikel', [Artikel::class, 'tampil'])->name('tampilartikel');
 Route::get('artikel/baca/{slug}', [Artikel::class, 'baca'])->name('bacaartikel');
 Route::get('artikel/search/', [Artikel::class, 'cari'])->name('cariartikel');
 
+//Agenda
 Route::get('/getevent', [Calendar::class, 'getEvent'])->name('getevent');
 

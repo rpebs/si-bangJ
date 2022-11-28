@@ -10,7 +10,7 @@
                 </div>
 
 
-                <p class="card-text mt-5 mb-5">{{ $postingans->post }}</p>
+                <p class="card-text mt-5 mb-5">{!! $postingans->post !!}</p>
             </div>
 
 

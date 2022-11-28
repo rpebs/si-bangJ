@@ -25,7 +25,7 @@
                                     class="text-muted">{{ \Carbon\Carbon::parse($p->tgl_post)->diffForHumans() }}</small>
                             </p>
                             <p class="card-text">{{ $p->excerpt }}</p>
-                            <a href="/berita/baca/{{ $p->slug }}">Baca Selengkapnya</a>
+                            <a href="/artikel/baca/{{ $p->slug }}">Baca Selengkapnya</a>
                         </div>
                     </div>
                 </div>
