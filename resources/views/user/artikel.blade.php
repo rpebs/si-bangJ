@@ -21,7 +21,9 @@
 
                         <div class="card-body">
                             <h5 class="card-title">{{ $p->judul }}</h5>
-                            <p class="card-text"><small class="text-muted">{{ $p->tgl_post }}</small></p>
+                            <p class="card-text"><small
+                                    class="text-muted">{{ \Carbon\Carbon::parse($p->tgl_post)->diffForHumans() }}</small>
+                            </p>
                             <p class="card-text">{{ $p->excerpt }}</p>
                             <a href="/berita/baca/{{ $p->slug }}">Baca Selengkapnya</a>
                         </div>

@@ -1,6 +1,6 @@
 @extends('user.master')
 @section('content')
-    <div class="container">
+    <div class="container" style="min-height: 793px">
         <div class="row mt-5">
             <div class="ms-auto me-auto col-md-8 justify-content-center">
                 <h2 class="card-title">{{ $postingans->judul }}</h2>
@@ -10,7 +10,7 @@
                 </div>
 
 
-                <p class="card-text mt-5 mb-5">{{ $postingans->post }}</p>
+                <p class="card-text mt-5 mb-5">{!! $postingans->post !!}</p>
             </div>
 
 
