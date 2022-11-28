@@ -75,6 +75,7 @@ Route::middleware(['auth'])->group(function () {
     //CRUD Berita
     Route::get('post/berita', [Berita::class, 'index'])->name('berita');
     Route::get('x/berita/cekSlug', [Berita::class, 'cekSlug']);
+    Route::get('x/berita/cekSlug2', [Berita::class, 'cekSlug2']);
     Route::post('post/berita/simpan', [Berita::class, 'store'])->name('simpanberita');
     Route::post('post/berita/edit', [Berita::class, 'update'])->name('updateberita');
     Route::get('post/berita/hapus/{slug}', [Berita::class, 'delete'])->name('hapusberita');

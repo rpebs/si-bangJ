@@ -1,13 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\SuratKeluar;
 use App\Models\SuratMasuk;
 use Illuminate\Http\Request;
 
 class Calendar extends Controller
 {
-     public function getEvent(){
+    public function getEvent()
+    {
         // if(request()->ajax()){
         //     $start = (!empty($_GET["tgl_mulai"])) ? ($_GET["tgl_mulai"]) : ('');
         //     $end = (!empty($_GET["tgl_selesai"])) ? ($_GET["tgl_selesai"]) : ('');
@@ -18,8 +20,8 @@ class Calendar extends Controller
         // return view('calendar');
 
 
-        $events = SuratKeluar::all( );
-        $event = SuratMasuk::all( );
+        $events = SuratKeluar::all();
+        $event = SuratMasuk::all();
 
 
         return view('agenda', [
@@ -27,7 +29,6 @@ class Calendar extends Controller
             'event' => $event,
             'active' => 'agenda'
         ]);
-
     }
     // public function createEvent(Request $request){
     //     $data = $request->except('_token');
