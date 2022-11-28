@@ -65,7 +65,7 @@
                         </nav>
                     </div>
                     <a class="nav-link {{ $active === 'agenda' ? 'text-light' : '' }}" href="/agenda">
-                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        <div class="sb-nav-link-icon"><i class="fa-regular fa-calendar-days"></i></div>
                         Agenda
                     </a>
                 </div>

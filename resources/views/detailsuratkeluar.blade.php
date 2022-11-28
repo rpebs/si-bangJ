@@ -1,10 +1,10 @@
 @extends('layouts.master')
 @section('content')
     <div class="container-fluid px-4">
-        <h1 class="mt-4">Tabel Surat Keluar</h1>
+        <h1 class="mt-4">Detail Surat Keluar</h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a href="#">Surat Keluar</a></li>
-            <li class="breadcrumb-item active">Tabel</li>
+            <li class="breadcrumb-item active">Detail</li>
         </ol>
 
 
