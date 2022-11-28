@@ -94,7 +94,7 @@
                                                 <div class="mb-3">
                                                     <label for="slug" class="form-label">Slug</label>
                                                     <input type="text" class="form-control" name="slug" id="slug2"
-                                                        required value="{{ $p->slug }}">
+                                                        required>
                                                 </div>
                                                 <input type="hidden" name="kategori" value="berita">
                                                 <div class="mb-3">
@@ -134,6 +134,19 @@
             </div>
         </div>
     </div>
+
+    <script>
+        const judul2 = document.querySelector('#judul2');
+        const slug2 = document.querySelector('#slug2');
+
+
+        judul2.addEventListener('mousemove', function() {
+
+            fetch('/x/berita/cekSlug2?judul2=' + judul2.value)
+                .then(response => response.json())
+                .then(data => slug2.value = data.slug);
+        });
+    </script>
 
 
 

@@ -34,7 +34,7 @@ class Berita extends Controller
             Postingan::create(
                 [
                     'judul' => $request->judul,
-                    'slug' => Str::slug($request->judul, '-'),
+                    'slug' => $request->slug,
                     'excerpt' => Str::limit(strip_tags($request->post), 100, '...'),
                     'kategori' => $request->kategori,
                     'post' => $request->post,
@@ -48,7 +48,7 @@ class Berita extends Controller
             \App\Models\Postingan::create(
                 [
                     'judul' => $request->judul,
-                    'slug' => Str::slug($request->judul, '-'),
+                    'slug' => $request->slug,
                     'excerpt' => $request->excerpt,
                     'kategori' => $request->kategori,
                     'tgl_post' => $request->tgl_post,
@@ -148,6 +148,13 @@ class Berita extends Controller
     public function cekSlug(Request $request)
     {
         $slug = SlugService::createSlug(Postingan::class, 'slug', $request->judul);
+
+        return response()->json(['slug' => $slug]);
+    }
+
+    public function cekSlug2(Request $request)
+    {
+        $slug = SlugService::createSlug(Postingan::class, 'slug', $request->judul2);
 
         return response()->json(['slug' => $slug]);
     }
