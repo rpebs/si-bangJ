@@ -2,18 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Postingan;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Session;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class Artikel extends Controller
 {
     public function index(){
-      $data = \App\Models\Postingan::where('kategori', 'artikel')->get();
+      $data = Postingan::where('kategori', 'artikel')->get();
 
-      return view('artikel', ['active' => 'artikel','postingans' => $data]);
+      return view('artikel', [
+        'active' => 'artikel',
+        'postingans' => $data
+    ]);
     }
 
     public function store(Request $request)
@@ -28,8 +33,8 @@ class Artikel extends Controller
             \App\Models\Postingan::create(
                     [
                         'judul' => $request->judul,
-                        'slug' => Str::slug($request->judul, '-'),
-                        'excerpt' => $request->excerpt,
+                        'slug' => $request->slug,
+                        'excerpt' => Str::limit(strip_tags($request->post), 100, '...'),
                         'kategori' => $request->kategori,
                         'post' => $request->post,
                         'tgl_post' => $request->tgl_post,
@@ -42,8 +47,8 @@ class Artikel extends Controller
              \App\Models\Postingan::create(
                     [
                         'judul' => $request->judul,
-                        'slug' => Str::slug($request->judul, '-'),
-                        'excerpt' => $request->excerpt,
+                        'slug' => $request->slug,
+                        'excerpt' => Str::limit(strip_tags($request->post), 100, '...'),
                         'kategori' => $request->kategori,
                         'tgl_post' => $request->tgl_post,
                         'post' => $request->post,
@@ -75,8 +80,8 @@ class Artikel extends Controller
             \App\Models\Postingan::where('id',$request->id)->update(
                     [
                         'judul' => $request->judul,
-                        'slug' => Str::slug($request->judul, '-'),
-                        'excerpt' => $request->excerpt,
+                        'slug' => $request->slug,
+                        'excerpt' => Str::limit(strip_tags($request->post), 100, '...'),
                         'kategori' => $request->kategori,
                         'post' => $request->post,
                         'tgl_post' => $request->tgl_post,
@@ -89,8 +94,8 @@ class Artikel extends Controller
              \App\Models\Postingan::where('id',$request->id)->update(
                     [
                         'judul' => $request->judul,
-                        'slug' => Str::slug($request->judul, '-'),
-                        'excerpt' => $request->excerpt,
+                        'slug' => $request->slug,
+                        'excerpt' => Str::limit(strip_tags($request->post), 100, '...'),
                         'kategori' => $request->kategori,
                         'tgl_post' => $request->tgl_post,
                         'post' => $request->post,
@@ -139,4 +144,11 @@ class Artikel extends Controller
 		$data = \App\Models\Postingan::where('judul','like',"%".$cari."%", 'and', 'kategori', 'artikel')->orderBy('tgl_post','desc')->paginate(10);
 		return view('user.berita', ['title' => 'WEB | Daftar Berita','active' => 'artikel', 'postingans' => $data]);
 	}
+
+    public function cekSlugArtikel(Request $request){
+
+        $slug = SlugService::createSlug(Postingan::class, 'slug', $request->judul);
+
+        return response()->json(['slug' => $slug]);
+    }
 }

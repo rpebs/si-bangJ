@@ -3,6 +3,7 @@
 use App\Http\Controllers\Artikel;
 use App\Http\Controllers\Barang;
 use App\Http\Controllers\Berita;
+use App\Http\Controllers\Calendar;
 use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Ecommerce;
 use App\Http\Controllers\KategoriBarang;
@@ -66,6 +67,7 @@ Route::middleware(['auth'])->group(function () {
 
     //CRUD Artikel
     Route::get('post/artikel', [Artikel::class, 'index'])->name('artikel');
+    Route::get('x/post/artikel', [Artikel::class, 'cekSlugArtikel']);
     Route::post('post/artikel/simpan', [Artikel::class, 'store'])->name('simpanartikel');
     Route::post('post/artikel/edit', [Artikel::class, 'update'])->name('updateartikel');
     Route::get('post/artikel/hapus/{slug}', [Artikel::class, 'delete'])->name('hapusartikel');
@@ -77,6 +79,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post('post/berita/simpan', [Berita::class, 'store'])->name('simpanberita');
     Route::post('post/berita/edit', [Berita::class, 'update'])->name('updateberita');
     Route::get('post/berita/hapus/{slug}', [Berita::class, 'delete'])->name('hapusberita');
+
+    //Cek Agenda
+    Route::get('/agenda', [Calendar::class, 'getEvent'])->name('getevent');
+    Route::get('/surat/keluar/{kode_surat}', [SuratKeluar::class, 'detail'])->name('detailsuratkeluar');
+    Route::get('/surat/masuk/{kode_surat}', [SuratMasuk::class, 'detail'])->name('detailsuratmasuk');
 });
 
 //View User Ecommerce
@@ -93,3 +100,6 @@ Route::get('berita/search/', [Berita::class, 'cari'])->name('cariberita');
 Route::get('artikel', [Artikel::class, 'tampil'])->name('tampilartikel');
 Route::get('artikel/baca/{slug}', [Artikel::class, 'baca'])->name('bacaartikel');
 Route::get('artikel/search/', [Artikel::class, 'cari'])->name('cariartikel');
+
+Route::get('/getevent', [Calendar::class, 'getEvent'])->name('getevent');
+

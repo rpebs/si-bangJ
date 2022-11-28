@@ -67,6 +67,7 @@
                                         class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></a>
                                 </td>
                             </tr>
+                            {{-- modal --}}
                             <div class="modal fade" id="editmodal{{ $p->slug }}" data-bs-backdrop="static"
                                 data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
                                 aria-hidden="true">
@@ -127,6 +128,7 @@
                                     </div>
                                 </div>
                             </div>
+                            {{-- end modal --}}
                         @endforeach
 
                     </tbody>

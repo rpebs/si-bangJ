@@ -134,8 +134,12 @@ class Berita extends Controller
 
     public function baca($slug)
     {
-        $data = \App\Models\Postingan::where('slug', $slug)->first();
-        return view('user.bacaberita', ['title' => 'WEB | Baca Postingan', 'active' => 'berita', 'postingans' => $data]);
+        $data = Postingan::where('slug', $slug)->first();
+        return view('user.bacaberita', [
+            'title' => 'WEB | Baca Postingan',
+             'active' => 'berita',
+             'postingans' => $data
+            ]);
     }
 
     public function cari(Request $request)
