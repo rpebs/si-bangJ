@@ -3,6 +3,7 @@
 use App\Http\Controllers\Artikel;
 use App\Http\Controllers\Barang;
 use App\Http\Controllers\Berita;
+use App\Http\Controllers\Blog;
 use App\Http\Controllers\Calendar;
 use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Ecommerce;
@@ -103,4 +104,7 @@ Route::get('artikel/search/', [Artikel::class, 'cari'])->name('cariartikel');
 
 //Agenda
 Route::get('/getevent', [Calendar::class, 'getEvent'])->name('getevent');
+
+//Home user
+Route::get('/blog', [Blog::class, 'index'])->name('blog');
 
