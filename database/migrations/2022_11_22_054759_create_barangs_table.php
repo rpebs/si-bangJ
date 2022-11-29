@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreignId('kategori_id');
             $table->integer('harga');
             $table->string('image');
+            $table->string('detail');
             $table->timestamps();
         });
     }
