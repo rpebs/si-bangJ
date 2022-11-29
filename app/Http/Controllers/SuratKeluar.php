@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
-
+use PDF;
 class SuratKeluar extends Controller
 {
     public function index()
@@ -117,5 +117,14 @@ class SuratKeluar extends Controller
             'surat_keluars' => $data,
             'kategori_surats' => $kategori
         ]);
+    }
+
+    public function cetak_pdf()
+    {
+    	$data = \App\Models\SuratKeluar::all();
+        $kategori = \App\Models\KategoriSurat::all();
+
+    	$pdf = PDF::loadview('cetak_pdf.suratkeluarpdf',['suratkeluar'=>$data, 'kategori'=>$kategori])->setPaper('a4', 'landscape');
+    	return $pdf->stream('laporan-surat-keluar-pdf');
     }
 }

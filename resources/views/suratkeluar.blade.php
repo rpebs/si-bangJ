@@ -33,18 +33,18 @@
                 Tabel Data Surat Keluar
             </div>
             <div class="card-body">
+                <a href="{{ route('cetaksuratmasuk') }}" class="btn btn-primary mb-3" target="_blank">CETAK PDF</a>
                 <table id="datatablesSimple">
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Kode</th>
+                            <th>Nomor Surat</th>
                             <th>Kategori</th>
-                            <th>Tanggal Masuk</th>
+                            <th>Tanggal Keluar</th>
                             <th>Tujuan</th>
                             <th>Perihal</th>
                             <th>Tempat</th>
-                            <th>Tanggal Mulai</th>
-                            <th>Tanggal Selesai</th>
+                            <th>Tanggal Pelaksanaan</th>
                             <th>Keterangan</th>
                             <th>Aksi</th>
                         </tr>
@@ -62,8 +62,7 @@
                                 <td>{{ $d->tujuan }}</td>
                                 <td>{{ $d->perihal }}</td>
                                 <td>{{ $d->tempat }}</td>
-                                <td>{{ $d->tgl_mulai }}</td>
-                                <td>{{ $d->tgl_selesai }}</td>
+                                <td>{{ $d->tgl_mulai }} sd {{ $d->tgl_selesai }}</td>
                                 <td>{{ $d->keterangan }}</td>
                                 <td>
 
@@ -98,7 +97,7 @@
                                                     <div class="col-md-6">
                                                         <input type="hidden" name="id" value="{{ $d->id }}">
                                                         <div class="mb-3">
-                                                            <label for="kode" class="form-label">Kode</label>
+                                                            <label for="kode" class="form-label">Nomor Surat</label>
                                                             <input type="text" class="form-control" id="kode"
                                                                 name="kode_surat" value="{{ $d->kode_surat }}" readonly>
 
@@ -216,7 +215,7 @@
                         <div class="col-md-6">
 
                             <div class="mb-3">
-                                <label for="kode" class="form-label">Kode</label>
+                                <label for="kode" class="form-label">Nomor Surat</label>
                                 <input type="text" class="form-control" id="kode" name="kode_surat">
                                 {{-- <div id="kode" class="form-text">We'll never share your email with anyone else.
                                 </div> --}}

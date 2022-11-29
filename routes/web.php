@@ -38,12 +38,14 @@ Route::middleware(['auth'])->group(function () {
     Route::post('surat/masuk/simpan', [SuratMasuk::class, 'store'])->name('simpansuratmasuk');
     Route::post('surat/masuk/update', [SuratMasuk::class, 'update'])->name('updatesuratmasuk');
     Route::get('surat/masuk/hapus/{kode_surat}', [SuratMasuk::class, 'delete'])->name('hapussuratmasuk');
+    Route::get('surat/masuk/cetak_pdf', [SuratMasuk::class, 'cetak_pdf'])->name('cetaksuratmasuk');
 
     //CRUD Surat Keluar
     Route::get('surat/keluar', [SuratKeluar::class, 'index'])->name('suratkeluar');
     Route::post('surat/keluar/simpan', [SuratKeluar::class, 'store'])->name('simpansuratkeluar');
     Route::post('surat/keluar/update', [SuratKeluar::class, 'update'])->name('updatesuratkeluar');
     Route::get('surat/keluar/hapus/{kode_surat}', [SuratKeluar::class, 'delete'])->name('hapussuratkeluar');
+    Route::get('surat/keluar/cetak_pdf', [SuratKeluar::class, 'cetak_pdf'])->name('cetaksuratkeluar');
 
     //CRUD Kategori Surat
     Route::get('surat/kategori', [KategoriSurat::class, 'index'])->name('kategorisurat');

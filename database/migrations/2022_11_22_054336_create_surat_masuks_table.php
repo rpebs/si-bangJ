@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('kode_surat')->unique();
             $table->foreignId('kategori_id');
+            $table->date('tgl_surat');
             $table->date('tgl_masuk');
             $table->string('pengirim');
             $table->string('perihal');
