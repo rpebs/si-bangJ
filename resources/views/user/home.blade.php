@@ -63,7 +63,7 @@
         <div class="row mt-5">
             <h3>Semua Postingan</h3>
             @foreach ($postingan as $p)
-                <div class="col-md-3">
+                <div class="col-md-12">
                     {{-- <div class="card mb-3">
                         <img src="/gambarpostingan/{{ $p->image }}" height="200px" class="card-img-top" alt="...">
 
@@ -76,9 +76,24 @@
                             <a href="/artikel/baca/{{ $p->slug }}">Baca Selengkapnya</a>
                         </div>
                     </div> --}}
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"></li>
-                    </ul>
+                    <div class="card mb-3">
+                        <div class="row g-0">
+
+                            <div class="col-md-4">
+                                <img src="/gambarpostingan/{{ $p->image }}" class="img-fluid rounded-start"
+                                    alt="..." width="300">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $p->judul }}</h5>
+                                    <p class="card-text">{{ $p->excerpt }}</p>
+                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                    <p><a href="/berita/baca/{{ $p->slug }}">Baca Selengkapnya</a></p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
             @endforeach
         </div>

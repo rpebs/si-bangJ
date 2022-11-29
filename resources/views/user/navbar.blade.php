@@ -9,6 +9,10 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
+                        <a class="nav-link {{ $active === 'blog' ? 'active' : '' }}" aria-current="page"
+                            href="{{ route('blog') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link {{ $active === 'berita' ? 'active' : '' }}" aria-current="page"
                             href="{{ route('tampilberita') }}">Berita</a>
                     </li>
