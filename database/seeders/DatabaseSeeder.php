@@ -18,8 +18,10 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
         \App\Models\User::insert([
+            'nama' => 'administrator',
             'username' => 'admin',
             'password' => Hash::make('admin'),
+            'gambar' => 'avatar.jpg'
         ]);
     }
 }

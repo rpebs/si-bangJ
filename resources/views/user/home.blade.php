@@ -16,8 +16,11 @@
         <div class="row mt-5 justify-content-center">
             <div class="col-md-8">
                 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
 
+                    <div class="carousel-inner">
+                        <?php if(empty($first)) { ?>
+                        <h3 class="text-center">Data Tidak Ada Berita Trending</h3>
+                        <?php } else { ?>
                         <div class="carousel-item active">
                             <div class="card mb-3">
                                 <img src="/gambarpostingan/{{ $first->image }}" class="img-fluid" alt="..."
@@ -29,6 +32,8 @@
                                 </div>
                             </div>
                         </div>
+                        <?php } ?>
+
 
                         @foreach ($slide as $s)
                             <div class="carousel-item">
@@ -64,6 +69,9 @@
 
         <div class="row mt-5">
             <h3>Postingan Terbaru</h3>
+            <?php if($postingan->isEmpty()){ ?>
+            <h3 class="text-center">Data Berita Tidak Ada</h3>
+            <?php } ?>
             @foreach ($postingan as $p)
                 <div class="col-md-12">
                     <div class="card card-post mb-3">
@@ -94,6 +102,9 @@
 
         <div class="row mb-5 ">
             <h3>Produk UMKM Terbaru</h3>
+            <?php if($barangs->isEmpty()){ ?>
+            <h3 class="text-center">Data Produk Tidak Ada</h3>
+            <?php } ?>
             @foreach ($barangs as $b)
                 <div class="col-6 col-md-3 col-lg-2 mt-3 ">
                     <div class="card h-100 card-post">
@@ -133,8 +144,8 @@
                     </div>
                 </div>
                 <!-- Modal -->
-                <div class="modal fade" id="detail{{ $b->kode_barang }}" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
+                <div class="modal fade" id="detail{{ $b->kode_barang }}" tabindex="-1"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">

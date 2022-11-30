@@ -21,6 +21,9 @@
         @endforeach
 
         <div class="row mb-5 ">
+            <?php if($barangs->isEmpty()){ ?>
+            <h3 class="text-center">Data Produk Tidak Ada</h3>
+            <?php } ?>
             @foreach ($barangs as $b)
                 <div class="col-6 col-md-3 col-lg-2 mt-3 ">
                     <div class="card h-100">

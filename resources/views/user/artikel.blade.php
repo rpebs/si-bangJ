@@ -14,6 +14,9 @@
         </div>
 
         <div class="row mt-5">
+            <?php if($postingans->isEmpty()){ ?>
+            <h3 class="text-center">Data Artikel Tidak Ada</h3>
+            <?php } ?>
             @foreach ($postingans as $p)
                 <div class="col-md-3">
                     <div class="card mb-3">

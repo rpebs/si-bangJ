@@ -33,6 +33,9 @@ Route::get('login/aksi/logout', [Login::class, 'logout'])->name('logout');
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/', [Dashboard::class, 'index'])->name('dashboard');
+    Route::get('/admin/edit',[Login::class, 'edit'])->name('editadmin');
+    Route::post('/admin/update',[Login::class, 'update'])->name('updateadmin');
+
     //CRUD Surat Masuk
     Route::get('surat/masuk', [SuratMasuk::class, 'index'])->name('suratmasuk');
     Route::post('surat/masuk/simpan', [SuratMasuk::class, 'store'])->name('simpansuratmasuk');

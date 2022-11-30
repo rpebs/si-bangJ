@@ -4,18 +4,21 @@
         <p>
         <h1>Daftar Agenda </h1>
         </p>
-        <div class="card col-md-6">
-            <div class="card-header">
-                Agenda Surat Masuk dan Keluar
-            </div>
-            <div class="row">
-                <div class="panel-body">
-                    <div id='calendar'></div>
+        <center>
+            <div class="card col-md-8">
+                <div class="card-header">
+                    Agenda Surat Masuk dan Keluar
                 </div>
+                <div class="row">
+                    <div class="panel-body">
+                        <div id='calendar'></div>
+                    </div>
+                </div>
+
+
             </div>
+        </center>
 
-
-        </div>
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
