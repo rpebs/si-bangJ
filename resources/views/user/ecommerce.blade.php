@@ -75,16 +75,14 @@
                                     </div>
                                     <div class="col-md-6 ms-auto">
                                         <h3>{{ $b->nama_barang }}</h3>
-                                        <p>ini adalah detail barang : <br> Lorem ipsum dolor sit amet consectetur
-                                            adipisicing elit.
-                                            Placeat voluptas asperiores quae animi numquam velit dolor? Cupiditate nobis
-                                            omnis praesentium.</p>
+                                        <p>{{ $b->detail }}</p>
                                         <h5>Harga : <?php echo 'Rp ' . number_format("$float", 0, ',', '.'); ?></h5>
                                     </div>
                                 </div>
                             </div>
                             <div class="modal-footer d-flex justify-content-center">
-                                <button type="button" class="btn btn-primary" style="width: 20%">Beli</button>
+                                <a href="https://api.whatsapp.com/send?phone=+62881036102146&text=Halo admin ! Saya%20mau%20pesan%20barang%0ANama%20Barang : *{{ $b->nama_barang }}*%0AKode Barang : *{{ $b->kode_barang }}*"
+                                    class="btn btn-primary" style="width: 20%">Beli</a>
                             </div>
                         </div>
                     </div>

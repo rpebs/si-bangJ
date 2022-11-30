@@ -3,6 +3,7 @@
 use App\Http\Controllers\Artikel;
 use App\Http\Controllers\Barang;
 use App\Http\Controllers\Berita;
+use App\Http\Controllers\Blog;
 use App\Http\Controllers\Calendar;
 use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Ecommerce;
@@ -37,12 +38,14 @@ Route::middleware(['auth'])->group(function () {
     Route::post('surat/masuk/simpan', [SuratMasuk::class, 'store'])->name('simpansuratmasuk');
     Route::post('surat/masuk/update', [SuratMasuk::class, 'update'])->name('updatesuratmasuk');
     Route::get('surat/masuk/hapus/{kode_surat}', [SuratMasuk::class, 'delete'])->name('hapussuratmasuk');
+    Route::get('surat/masuk/cetak_pdf', [SuratMasuk::class, 'cetak_pdf'])->name('cetaksuratmasuk');
 
     //CRUD Surat Keluar
     Route::get('surat/keluar', [SuratKeluar::class, 'index'])->name('suratkeluar');
     Route::post('surat/keluar/simpan', [SuratKeluar::class, 'store'])->name('simpansuratkeluar');
     Route::post('surat/keluar/update', [SuratKeluar::class, 'update'])->name('updatesuratkeluar');
     Route::get('surat/keluar/hapus/{kode_surat}', [SuratKeluar::class, 'delete'])->name('hapussuratkeluar');
+    Route::get('surat/keluar/cetak_pdf', [SuratKeluar::class, 'cetak_pdf'])->name('cetaksuratkeluar');
 
     //CRUD Kategori Surat
     Route::get('surat/kategori', [KategoriSurat::class, 'index'])->name('kategorisurat');
@@ -103,4 +106,7 @@ Route::get('artikel/search/', [Artikel::class, 'cari'])->name('cariartikel');
 
 //Agenda
 Route::get('/getevent', [Calendar::class, 'getEvent'])->name('getevent');
+
+//Home user
+Route::get('/blog', [Blog::class, 'index'])->name('blog');
 

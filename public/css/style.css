@@ -2,3 +2,20 @@
     background-color: #c00000;
     color: white;
 }
+
+.card-post {
+    background-color: white !important;
+    transition: transform 0.2s;
+}
+.card-post:hover {
+    transform: scale(1.01);
+}
+
+.hover-body h5 a {
+    text-decoration: none;
+    color: black;
+}
+.hover-body h5 a:hover {
+    color: blue;
+    transition: 0.5;
+}

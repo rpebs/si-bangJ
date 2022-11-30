@@ -32,18 +32,19 @@
                 DataTable Example
             </div>
             <div class="card-body">
+                <a href="{{ route('cetaksuratmasuk') }}" class="btn btn-primary mb-3" target="_blank">CETAK PDF</a>
                 <table id="datatablesSimple">
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Kode</th>
+                            <th>Nomor Surat</th>
                             <th>Kategori</th>
+                            <th>Tanggal Surat</th>
                             <th>Tanggal Masuk</th>
                             <th>Pengirim</th>
                             <th>Perihal</th>
                             <th>Tempat</th>
-                            <th>Tanggal Mulai</th>
-                            <th>Tanggal Selesai</th>
+                            <th>Tanggal Pelaksaan</th>
                             <th>Keterangan</th>
                             <th>Aksi</th>
                         </tr>
@@ -57,12 +58,13 @@
                                 <td>{{ $no }}</td>
                                 <td>{{ $d->kode_surat }}</td>
                                 <td>{{ $d->kategori->nama_kategori }}</td>
+                                <td>{{ $d->tgl_surat }}</td>
                                 <td>{{ $d->tgl_masuk }}</td>
                                 <td>{{ $d->pengirim }}</td>
                                 <td>{{ $d->perihal }}</td>
                                 <td>{{ $d->tempat }}</td>
-                                <td>{{ $d->tgl_mulai }}</td>
-                                <td>{{ $d->tgl_selesai }}</td>
+                                <td>{{ $d->tgl_mulai }} sd {{ $d->tgl_selesai }}</td>
+
                                 <td>{{ $d->keterangan }}</td>
                                 <td>
 
@@ -97,7 +99,7 @@
                                                     <div class="col-md-6">
                                                         <input type="hidden" name="id" value="{{ $d->id }}">
                                                         <div class="mb-3">
-                                                            <label for="kode" class="form-label">Kode</label>
+                                                            <label for="kode" class="form-label">Nomor Surat</label>
                                                             <input type="text" class="form-control" id="kode"
                                                                 name="kode_surat" value="{{ $d->kode_surat }}" readonly>
                                                             {{-- <div id="kode" class="form-text">We'll never share your email with anyone else.
@@ -117,17 +119,27 @@
                                                             </select>
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label for="tgl_masuk" class="form-label">Tanggal Masuk</label>
-                                                            <input type="date" class="form-control" id="tgl_masuk"
-                                                                name="tgl_masuk" value="{{ $d->tgl_masuk }}">
-                                                            {{-- <div id="tgl_masuk" class="form-text">We'll never share your email with anyone else.
+                                                            <label for="tgl_surat" class="form-label">Tanggal
+                                                                Surat</label>
+                                                            <input type="date" class="form-control" id="tgl_surat"
+                                                                name="tgl_surat" value="{{ $d->tgl_surat }}">
+                                                            {{-- <div id="tgl_event" class="form-text">We'll never share your email with anyone else.
                                 </div> --}}
                                                         </div>
+
                                                         <div class="mb-3">
                                                             <label for="tempat" class="form-label">Tempat</label>
                                                             <input type="text" class="form-control" id="tempat"
                                                                 name="tempat" value="{{ $d->tempat }}">
                                                             {{-- <div id="tempat" class="form-text">We'll never share your email with anyone else.
+                                </div> --}}
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="tgl_selesai" class="form-label">Tanggal
+                                                                Selesai</label>
+                                                            <input type="date" class="form-control" id="tgl_selesai"
+                                                                name="tgl_selesai" value="{{ $d->tgl_selesai }}">
+                                                            {{-- <div id="tgl_event" class="form-text">We'll never share your email with anyone else.
                                 </div> --}}
                                                         </div>
 
@@ -149,6 +161,16 @@
                                                             {{-- <div id="perihal" class="form-text">We'll never share your email with anyone else.
                                 </div> --}}
                                                         </div>
+
+                                                        <div class="mb-3">
+                                                            <label for="tgl_masuk" class="form-label">Tanggal
+                                                                Masuk</label>
+                                                            <input type="date" class="form-control" id="tgl_masuk"
+                                                                name="tgl_masuk" value="{{ $d->tgl_masuk }}">
+                                                            {{-- <div id="tgl_masuk" class="form-text">We'll never share your email with anyone else.
+                                </div> --}}
+                                                        </div>
+
                                                         <div class="mb-3">
                                                             <label for="tgl_mulai" class="form-label">Tanggal
                                                                 Mulai</label>
@@ -157,14 +179,7 @@
                                                             {{-- <div id="tgl_event" class="form-text">We'll never share your email with anyone else.
                                 </div> --}}
                                                         </div>
-                                                        <div class="mb-3">
-                                                            <label for="tgl_selesai" class="form-label">Tanggal
-                                                                Selesai</label>
-                                                            <input type="date" class="form-control" id="tgl_selesai"
-                                                                name="tgl_selesai" value="{{ $d->tgl_selesai }}">
-                                                            {{-- <div id="tgl_event" class="form-text">We'll never share your email with anyone else.
-                                </div> --}}
-                                                        </div>
+
                                                         <div class="mb-3">
                                                             <label for="keterangan" class="form-label">Keterangan</label>
                                                             <textarea name="keterangan" id="keterangan" class="form-control">{{ $d->keterangan }}</textarea>
@@ -222,7 +237,7 @@
                         <div class="col-md-6">
 
                             <div class="mb-3">
-                                <label for="kode" class="form-label">Kode</label>
+                                <label for="kode" class="form-label">Nomor Surat</label>
                                 <input type="text" class="form-control" id="kode" name="kode_surat">
                                 {{-- <div id="kode" class="form-text">We'll never share your email with anyone else.
                                 </div> --}}
@@ -234,17 +249,24 @@
                                 </div> --}}
                             </div>
                             <div class="mb-3">
+                                <label for="tgl_surat" class="form-label">Tanggal Surat</label>
+                                <input type="date" class="form-control" id="tgl_surat" name="tgl_surat">
+                                {{-- <div id="tgl_masuk" class="form-text">We'll never share your email with anyone else.
+                                </div> --}}
+                            </div>
+                            <div class="mb-3">
                                 <label for="tgl_masuk" class="form-label">Tanggal Masuk</label>
                                 <input type="date" class="form-control" id="tgl_masuk" name="tgl_masuk">
                                 {{-- <div id="tgl_masuk" class="form-text">We'll never share your email with anyone else.
                                 </div> --}}
                             </div>
                             <div class="mb-3">
-                                <label for="tgl_selesai" class="form-label">Tanggal Selesai</label>
-                                <input type="date" class="form-control" id="tgl_selesai" name="tgl_selesai">
-                                {{-- <div id="tgl_event" class="form-text">We'll never share your email with anyone else.
+                                <label for="tempat" class="form-label">Tempat</label>
+                                <input type="text" class="form-control" id="tempat" name="tempat">
+                                {{-- <div id="tempat" class="form-text">We'll never share your email with anyone else.
                                 </div> --}}
                             </div>
+
 
 
 
@@ -275,18 +297,20 @@
                                 </div> --}}
                             </div>
                             <div class="mb-3">
-                                <label for="tempat" class="form-label">Tempat</label>
-                                <input type="text" class="form-control" id="tempat" name="tempat">
-                                {{-- <div id="tempat" class="form-text">We'll never share your email with anyone else.
+                                <label for="tgl_selesai" class="form-label">Tanggal Selesai</label>
+                                <input type="date" class="form-control" id="tgl_selesai" name="tgl_selesai">
+                                {{-- <div id="tgl_event" class="form-text">We'll never share your email with anyone else.
+                                </div> --}}
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="keterangan" class="form-label">Keterangan</label>
+                                <textarea name="keterangan" id="keterangan" class="form-control"></textarea>
+                                {{-- <div id="keterangan" class="form-text">We'll never share your email with anyone else.
                                 </div> --}}
                             </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="keterangan" class="form-label">Keterangan</label>
-                            <textarea name="keterangan" id="keterangan" class="form-control"></textarea>
-                            {{-- <div id="keterangan" class="form-text">We'll never share your email with anyone else.
-                                </div> --}}
-                        </div>
+
                         <div class="mb-3">
                             <label for="file" class="form-label">File</label>
                             <input type="file" name="file" class="form-control" id="file">

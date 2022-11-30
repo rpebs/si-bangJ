@@ -40,6 +40,7 @@
                             <th>Nama Barang</th>
                             <th>Kategori</th>
                             <th>Harga</th>
+                            <th>Detail</th>
                             <th>Gambar</th>
                             <th>Aksi</th>
                         </tr>
@@ -55,6 +56,7 @@
                                 <td>{{ $b->nama_barang }}</td>
                                 <td>{{ $b->kategori->nama_kategori }}</td>
                                 <td>{{ $b->harga }}</td>
+                                <td>{{ $b->detail }}</td>
                                 <td><img src="{{ url('/gambarbarang/' . $b->image) }}" width="80" alt="">
                                 </td>
                                 <td>
@@ -115,6 +117,10 @@
                                                     <label for="harga" class="form-label">Harga</label>
                                                     <input type="number" name="harga" class="form-control" id="harga"
                                                         placeholder="Harga Barang..." value="{{ $b->harga }}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="detail" class="form-label">Detail</label>
+                                                    <textarea type="number" name="detail" class="form-control" id="detail" placeholder="Detail Barang...">{{ $b->detail }}</textarea>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="gambar" class="form-label">Gambar</label>
@@ -182,8 +188,16 @@
                             placeholder="Harga Barang...">
                     </div>
                     <div class="mb-3">
+                        <label for="detail" class="form-label">Detail Barang</label>
+                        <textarea type="number" name="detail" class="form-control" id="detail" placeholder="Detail Barang..."></textarea>
+                    </div>
+                    <div class="mb-3">
                         <label for="gambar" class="form-label">Gambar</label>
-                        <input type="file" class="form-control" name="image" id="gambar">
+                        {{--  --}}
+                        <img class="img-preview1 img-fluid mb-3 col-sm-5">
+                        {{--  --}}
+                        <input type="file" class="form-control" name="image" id="image"
+                            onchange="previewImage1()">
                     </div>
 
 
@@ -197,3 +211,19 @@
         </div>
     </div>
 </div>
+
+<script>
+    function previewImage1() {
+        const image = document.querySelector('#image');
+        const imgPreview = document.querySelector('.img-preview1');
+
+        imgPreview.style.display = 'block';
+
+        const oFReader = new FileReader();
+        oFReader.readAsDataURL(image.files[0]);
+
+        oFReader.onload = function(oFREvent) {
+            imgPreview.src = oFREvent.target.result;
+        }
+    }
+</script>

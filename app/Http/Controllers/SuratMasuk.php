@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\SuratMasuk as ModelsSuratMasuk;
+use PDF;
 use Illuminate\Support\Facades\Session;
 
 class SuratMasuk extends Controller
@@ -31,6 +33,7 @@ class SuratMasuk extends Controller
                     'kode_surat' => $request->kode_surat,
                     'kategori_id' => $request->kategori_id,
                     'tgl_masuk' => $request->tgl_masuk,
+                    'tgl_surat' => $request->tgl_surat,
                     'pengirim' => $request->pengirim,
                     'perihal' => $request->perihal,
                     'tempat' => $request->tempat,
@@ -61,6 +64,7 @@ class SuratMasuk extends Controller
                 [
                     'kode_surat' => $request->kode_surat,
                     'kategori_id' => $request->kategori_id,
+                    'tgl_surat' => $request->tgl_surat,
                     'tgl_masuk' => $request->tgl_masuk,
                     'pengirim' => $request->pengirim,
                     'perihal' => $request->perihal,
@@ -78,6 +82,7 @@ class SuratMasuk extends Controller
                 'kode_surat' => 'required',
                 'kategori_id' => 'required',
                 'tgl_masuk' => 'required|date',
+                'tgl_surat' => 'required|date',
                 'pengirim' => 'required',
                 'perihal' => 'required',
                 'tempat' => 'required',
@@ -111,5 +116,14 @@ class SuratMasuk extends Controller
             'surat_masuks' => $data,
             'kategori_surats' => $kategori
         ]);
+    }
+
+     public function cetak_pdf()
+    {
+    	$data = \App\Models\SuratMasuk::all();
+        $kategori = \App\Models\KategoriSurat::all();
+
+    	$pdf = PDF::loadview('cetak_pdf.suratmasukpdf',['suratmasuk'=>$data, 'kategori'=>$kategori])->setPaper('a4', 'landscape');
+    	return $pdf->stream('laporan-surat-masuk-pdf');
     }
 }
