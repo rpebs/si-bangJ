@@ -46,7 +46,7 @@
                                 Kategori Barang</a>
                         </nav>
                     </div>
-                    <a class="nav-link {{ $active === 'artikel' || $active === 'berita' ? 'text-light' : '' }} collapsed"
+                    <a class="nav-link {{ $active === 'artikel' || $active === 'berita' || $active === 'kegiatan' ? 'text-light' : '' }} collapsed"
                         href="#" data-bs-toggle="collapse" data-bs-target="#collapsePost" aria-expanded="false"
                         aria-controls="collapseLayouts">
                         <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -62,12 +62,19 @@
                             <a class="nav-link {{ $active === 'artikel' ? 'text-light' : '' }}" href="/post/artikel"><i
                                     class="fa-regular fa-file-lines"></i>&nbsp;
                                 Artikel</a>
+                            <a class="nav-link {{ $active === 'kegiatan' ? 'text-light' : '' }}"
+                                href="{{ route('kegiatan') }}"><i class="fa-brands fa-elementor"></i>&nbsp;
+                                Kegiatan</a>
                         </nav>
                     </div>
                     <a class="nav-link {{ $active === 'agenda' ? 'text-light' : '' }}" href="/agenda">
                         <div class="sb-nav-link-icon"><i class="fa-regular fa-calendar-days"></i></div>
                         Agenda
                     </a>
+
+
+
+
                 </div>
             </div>
             <div class="sb-sidenav-footer">

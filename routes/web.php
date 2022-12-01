@@ -33,8 +33,8 @@ Route::get('login/aksi/logout', [Login::class, 'logout'])->name('logout');
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/', [Dashboard::class, 'index'])->name('dashboard');
-    Route::get('/admin/edit',[Login::class, 'edit'])->name('editadmin');
-    Route::post('/admin/update',[Login::class, 'update'])->name('updateadmin');
+    Route::get('/admin/edit', [Login::class, 'edit'])->name('editadmin');
+    Route::post('/admin/update', [Login::class, 'update'])->name('updateadmin');
 
     //CRUD Surat Masuk
     Route::get('surat/masuk', [SuratMasuk::class, 'index'])->name('suratmasuk');
@@ -90,6 +90,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/agenda', [Calendar::class, 'getEvent'])->name('getevent');
     Route::get('/surat/keluar/{kode_surat}', [SuratKeluar::class, 'detail'])->name('detailsuratkeluar');
     Route::get('/surat/masuk/{kode_surat}', [SuratMasuk::class, 'detail'])->name('detailsuratmasuk');
+
+    // kegiatan
+    Route::get('/admin-kegiatan', [Calendar::class, 'getKegiatan'])->name('kegiatan');
+    Route::post('/add-kegiatan', [Calendar::class, 'add_kegiatan'])->name('addkegiatan');
+    Route::post('/edit-kegiatan', [Calendar::class, 'edit_kegiatan'])->name('editkegiatan');
+    Route::post('/delete-kegiatan/{id}', [Calendar::class, 'delete_kegiatan'])->name('deletekegiatan');
 });
 
 //View User Ecommerce
@@ -112,4 +118,3 @@ Route::get('/getevent', [Calendar::class, 'getEvent'])->name('getevent');
 
 //Home user
 Route::get('/blog', [Blog::class, 'index'])->name('blog');
-

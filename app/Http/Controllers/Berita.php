@@ -137,9 +137,9 @@ class Berita extends Controller
         $data = Postingan::where('slug', $slug)->first();
         return view('user.bacaberita', [
             'title' => 'WEB | Baca Postingan',
-             'active' => 'berita',
-             'postingans' => $data
-            ]);
+            'active' => 'berita',
+            'postingans' => $data
+        ]);
     }
 
     public function cari(Request $request)
