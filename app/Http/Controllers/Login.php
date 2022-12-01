@@ -46,12 +46,13 @@ class Login extends Controller
     {
         $sesi = Auth::user()->username;
         $pass = User::where('username',$sesi)->first();
-        $val  =  $request->validate([
+
+
+        if($request->filled('old_password')){
+              $val  =  $request->validate([
             'new_password' => 'min:5',
             'gambar.*' => 'mimes:jpeg,jpg,png|max:2048'
         ]);
-
-        if($request->filled('old_password')){
             if(Hash::check($request->old_password, $pass->password)){
              if ($request->hasfile('gambar')) {
                 $gambar = DB::table('users')->where('username', $sesi)->first();
