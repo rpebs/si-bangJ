@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Barang;
 use App\Models\KategoriBarang;
+use App\Models\Kegiatan;
 use App\Models\Postingan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -17,6 +18,7 @@ class Blog extends Controller
         $berita = Postingan::all();
         $produk = Barang::orderby('created_at', 'desc')->get()->take(4);
         $katbarang = KategoriBarang::all();
+        $kegiatan = Kegiatan::orderby('created_at', 'desc')->get();
 
         return view('user.home', [
             'first' => $first,
@@ -24,7 +26,9 @@ class Blog extends Controller
             'postingan' => $berita,
             'barangs' => $produk,
             'kategori_barangs' => $katbarang,
+            'kegiatan' =>$kegiatan,
             'title' => 'Web Kepanduan | Blog', 'active' => 'home'
         ]);
+
     }
 }

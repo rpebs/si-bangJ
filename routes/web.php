@@ -123,3 +123,5 @@ Route::get('/getevent', [Calendar::class, 'getEvent'])->name('getevent');
 
 //Home user
 Route::get('/blog', [Blog::class, 'index'])->name('blog');
+
+Route::get('kegiatan/baca/{id}', [Calendar::class, 'baca'])->name('bacakegiatan');

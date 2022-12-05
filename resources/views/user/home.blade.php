@@ -1,7 +1,7 @@
 @extends('user.master')
 @section('content')
     <div class="container" style="min-height: 793px">
-        <div class="row mt-5">
+        {{-- <div class="row mt-5">
             <form action="{{ route('cariartikel') }}" method="get" class=" form-inline d-flex justify-content-center">
                 <div class="col-md-2"></div>
                 <div class="col-md-6">
@@ -11,7 +11,7 @@
                     <button type="submit" class="btn btn-md btn-primary">Cari</button>
                 </div>
             </form>
-        </div>
+        </div> --}}
 
         <div class="row mt-5 justify-content-center">
             <div class="col-md-8">
@@ -144,8 +144,8 @@
                     </div>
                 </div>
                 <!-- Modal -->
-                <div class="modal fade" id="detail{{ $b->kode_barang }}" tabindex="-1"
-                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="detail{{ $b->kode_barang }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -173,6 +173,47 @@
                     </div>
                 </div>
             @endforeach
+
+            <div class="row mt-5">
+                <h3>Agenda Kegiatan</h3>
+                <?php if($kegiatan->isEmpty()){ ?>
+                <h3 class="text-center">Data Berita Tidak Ada</h3>
+                <?php } ?>
+                @foreach ($kegiatan as $k)
+                    <div class="col-md-12">
+                        <div class="card card-post mb-3">
+                            {{-- <span class="mt-1 ms-1 position-absolute badge bg-danger text-light">{{ $k > kategori }}
+                            </span> --}}
+                            <div class="row g-0">
+
+                                {{-- <div class="col-md-4">
+                                    <img src="/gambarpostingan/{{ $k->image }}" class="img-fluid rounded-start"
+                                        alt="..." width="200">
+                                </div> --}}
+                                <div class="col-md-12">
+                                    {{-- <div class="card-body hover-body">
+                                        <h5 class="card-title"><a
+                                                href="/berita/baca/{{ $k->id }}">{{ $k->nama_kegiatan }}</a></h5>
+                                        <p class="card-text">{{ $k->excerpt }}</p>
+                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                        <p><a href="/berita/baca/{{ $k->id }}">Baca Selengkapnya</a></p>
+                                    </div> --}}
+                                    <ul class="list-group">
+
+                                        <li class="list-group-item">
+                                            <div class="btn btn-sm btn-primary">{{ $k->tgl_kegiatan }}</div>
+                                            <a href="kegiatan/baca/{{ $k->id }}" class="ms-3"
+                                                style="text-decoration: none;color: black;">{{ $k->nama_kegiatan }}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+
+            </div>
 
         </div>
 

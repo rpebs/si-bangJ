@@ -52,7 +52,7 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $d->tgl_kegiatan }}</td>
-                                <td><img src="{{ asset('storage/' . $d->image) }}" alt="{{ $d->nama_kegiatan }}"
+                                <td><img src="/gambarpostingan/{{ $d->image }}" alt="{{ $d->nama_kegiatan }}"
                                         width="100px">
                                 </td>
                                 <td>{{ $d->nama_kegiatan }}</td>
