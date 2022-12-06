@@ -110,8 +110,13 @@ class Calendar extends Controller
         return redirect()->route('kegiatan');
     }
 
+      public function tampil(){
+        $data = \App\Models\Kegiatan::orderBy('created_at','desc')->paginate(10);
+        return view('user.kegiatan', ['title' => 'WEB | Daftar Kegiatan' ,'active' => 'kegiatan','kegiatans'=>$data]);
+    }
+
     public function baca($id){
         $data = \App\Models\Kegiatan::where('id', $id)->first();
-        return view('user.bacakegiatan', ['title' => 'WEB | Baca Artikel' ,'active' => 'artikel','kegiatans'=>$data]);
+        return view('user.bacakegiatan', ['title' => 'WEB | Baca Kegiatan' ,'active' => 'artikel','kegiatans'=>$data]);
     }
 }

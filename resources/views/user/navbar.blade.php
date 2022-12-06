@@ -24,6 +24,10 @@
                         <a class="nav-link {{ $active === 'ecommerce' ? 'active' : '' }}"
                             href="{{ route('ecommerce') }}">Toko</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ $active === 'kegiatan' ? 'active' : '' }}"
+                            href="{{ route('listkegiatan') }}">Kegiatan</a>
+                    </li>
                 </ul>
             </div>
         </div>
